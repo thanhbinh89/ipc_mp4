@@ -1,0 +1,10 @@
+ffmpeg -i 20240228093414_1709087654_1709087954.g711 -c:a aac -strict experimental 20240228093414_1709087654_1709087954.aac
+
+ffmpeg -f alaw -ar 8000 -i 20240228114727_1709095647_1709095947.g711 -c:a aac -strict experimental -b:a 64k 20240228114727_1709095647_1709095947.aac
+ffmpeg -f alaw -ar 8000 -i 20240228114727_1709095647_1709095947.g711 -c:a aac -strict experimental -b:a 64k -ar 44100 20240228114727_1709095647_1709095947.aac
+
+
+play -t raw -r 8k -e a-law -b 8 -c 1 20240228114727_1709095647_1709095947.g711
+
+ffprobe -i 20240228114727_1709095647_1709095947.aac -show_format -show_streams -show_entries stream=sample_rate
+ffprobe -i out_mp4v2.mp4 -show_format -show_streams -show_entries stream=sample_rate
